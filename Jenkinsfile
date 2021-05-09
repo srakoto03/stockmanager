@@ -36,9 +36,9 @@ pipeline {
                 } 
          }  
 	 stage ('Création de l\'image Docker'){
-		 steps {
-			 sh ' docker build -t stockmanager_image . '
-		 }
+		steps {
+		    sh ' sudo docker build -t stockmanager_image . '
+		}
 	 }
 	    
     }  
