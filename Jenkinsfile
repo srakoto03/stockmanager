@@ -22,7 +22,15 @@ pipeline {
                 steps { 
                     sh "wget -P /home/jenkins/tomcat/webapps http://10.10.20.31:8081/repository/stockmanager/stockmanager-0.0.1-SNAPSHOT.jar" 
                 } 
-          } 	
+        }
+	stage ('Test de performance avec SonaQube'){
+		steps {
+		      withSonarQubeEnv('SonarQube') {		        
+			sh 'mvn clean verify sonar:sonar'
+		      }
+		}	
+	 }
+	    
 	    
     }  
 }
