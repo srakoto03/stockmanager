@@ -39,13 +39,13 @@ pipeline {
 		 steps { 
 			 sh " wget -P /home/jenkins/tomcat/webapps http://10.10.20.31:8081/repository/stockmanager/stockmanager-0.0.1-SNAPSHOT.jar"
 			 sh " mv /home/jenkins/tomcat/webapps/stockmanager-0.0.1-SNAPSHOT.jar ./target/ "
-			 sh " sudo docker build -t stockmanager:latest . "
+			 sh " docker build -t stockmanager:latest . "
 		 }
 	 }
 	 stage ('Stockage de l\'image Docker'){
 		 steps { 
-			 sh "docker login -u sdocker03 -p formation2021  " 
-			 sh "sudo docker push sdocker03/stockmanager:latest "
+			 sh "docker login -u sdocker03 -p formation2021 https://hub.docker.com/ " 
+			 sh "docker push sdocker03/stockmanager:latest "
 		 }
 	 }
 	    
