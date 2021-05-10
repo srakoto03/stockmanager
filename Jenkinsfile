@@ -42,7 +42,7 @@ pipeline {
 		 steps { 
 			 sh " wget -P /home/jenkins/tomcat/webapps http://10.10.20.31:8081/repository/stockmanager/stockmanager-0.0.1-SNAPSHOT.jar"
 			 sh " mv /home/jenkins/tomcat/webapps/stockmanager-0.0.1-SNAPSHOT.jar ./target/ "
-			 sh " sudo docker build -t stockmanager:v1 . "	
+			 sh " sudo docker build -t sdocker03/stockmanager:v1 . "	
 			 		 
 		 }
 	 }    
