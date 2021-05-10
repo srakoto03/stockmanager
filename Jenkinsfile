@@ -4,8 +4,6 @@ pipeline {
     }
     environment {
       	 DOCKERHUB_MDP=credentials('dockerhub')
-	 DOCKERHUB_MDP_USR='sdocker03'
-	 DOCKERHUB_MDP_PSW='formation2021'
     }
     stages { 	 
         stage('Test unitaires') {  
@@ -49,7 +47,7 @@ pipeline {
 	 }
 	 stage ('Stockage de l\'image Docker'){
 		 steps { 
-			 sh "docker login -u ${env.DOCKERHUB_MDP_USR} -p ${env.DOCKERHUB_MDP_PSW}" 
+			 sh "sudo docker login -u ${DOCKERHUB_MDP_USR}:${DOCKERHUB_MDP_PSW} https://hub.docker.com/ " 
 			 sh "sudo docker push sdocker03/stockmanager:latest "
 		 }
 	 }
