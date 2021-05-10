@@ -47,7 +47,7 @@ pipeline {
 	 }
 	 stage ('Stockage de l\'image Docker'){
 		 steps { 
-			 sh "sudo docker login -u ${DOCKERHUB_MDP_USR}:${DOCKERHUB_MDP_PSW} https://hub.docker.com/ " 
+			 sh "sudo docker login -u sdocker -p formation2021 https://hub.docker.com/ " 
 			 sh "sudo docker push sdocker03/stockmanager:latest "
 		 }
 	 }
