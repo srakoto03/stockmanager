@@ -38,19 +38,13 @@ pipeline {
                     sh "curl -u admin:formation-2021 --upload-file /home/jenkins/tomcat/webapps/stockmanager-0.0.1-SNAPSHOT.jar 'http://{10.10.20.31}:8081/repository/stockmanager/stockmanager.jar'" 
                 } 
          }  
-	 stage ('Création de l\'image Docker'){
+	 stage ('Création et Stockage de l\'image Docker'){
 		 steps { 
 			 sh " wget -P /home/jenkins/tomcat/webapps http://10.10.20.31:8081/repository/stockmanager/stockmanager-0.0.1-SNAPSHOT.jar"
 			 sh " mv /home/jenkins/tomcat/webapps/stockmanager-0.0.1-SNAPSHOT.jar ./target/ "
-			 sh " sudo docker build -t stockmanager:latest . "
+			 sh " sudo docker build -t stockmanager:v1 . "	
+			 		 
 		 }
-	 }
-	 stage ('Stockage de l\'image Docker'){
-		 steps { 
-			 sh "sudo docker login -u ${env.DOCKERHUB_MDP_USR} -p ${env.DOCKERHUB_MDP_PSW}" 
-			 sh "sudo docker push sdocker03/stockmanager:latest "
-		 }
-	 }
-	    
+	 }    
     }  
 }
