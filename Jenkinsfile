@@ -3,7 +3,9 @@ pipeline {
         label 'Linux'
     }
     environment {
-      	 DOCKERHUB_MDP = credentials('dockerhub')
+      	 DOCKERHUB_MDP=credentials('dockerhub')
+	 DOCKERHUB_MDP_USR='sdocker03'
+	 DOCKERHUB_MDP_PSW='formation2021'
     }
     stages { 	 
         stage('Test unitaires') {  
